@@ -1,0 +1,274 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', serif;
+    color: #33261a;
+}
+
+body {
+    /* 改为 img/ 路径（假设图片在根目录的 img 文件夹） */
+    background-image: url('../img/gongchangsheng.jpg'); 
+    background-size: cover;
+    background-color: #f0e6d2;
+    scroll-behavior: smooth;
+}
+
+/* 页眉样式 */
+.medieval-header {
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    padding: 1rem;
+    border-bottom: 2px solid #8b572a;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.crest-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.main-crest {
+    width: 80px;
+    height: 80px;
+}
+
+.medieval-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.medieval-nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #33261a;
+    position: relative;
+}
+
+.medieval-nav a:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: #8b572a;
+}
+
+/* 主内容样式 */
+.hero-banner {
+    height: 400px;
+    /* 改为 img/ 路径 */
+    background-image: url('../img/shusanlu.jpg'); 
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.parchment-bg {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #8b572a;
+    color: white;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #6e4519;
+}
+
+.content-section {
+    margin: 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #33261a;
+    border-bottom: 2px solid #8b572a;
+    padding-bottom: 0.5rem;
+}
+
+/* 人物网格样式 */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.character-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.character-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.character-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    transition: transform 0.5s ease;
+}
+
+.character-card:hover .character-image {
+    transform: scale(1.03);
+}
+
+.character-info {
+    padding: 0 1rem;
+}
+
+.character-name {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    color: #8b572a;
+    text-transform: capitalize;
+}
+
+.character-title {
+    font-style: italic;
+    color: #66513c;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.character-bio {
+    line-height: 1.8;
+    color: #554332;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+/* 装饰元素 */
+.character-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #8b572a;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.character-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* 查看详情提示 */
+.view-detail {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(139, 87, 42, 0.8);
+    color: white;
+    padding: 0.5rem 0;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.character-card:hover .view-detail {
+    transform: translateY(0);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .character-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0;
+    }
+
+    .character-image {
+        height: 160px;
+    }
+
+    .content-section {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .medieval-nav ul {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-banner {
+        height: 300px;
+    }
+
+    .parchment-bg {
+        padding: 1.5rem;
+    }
+}
+
+/* 页脚样式 */
+.medieval-footer {
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+    border-top: 2px solid #8b572a;
+}
+
+.scroll-top {
+    margin-bottom: 1rem;
+}
+
+.scroll-top a {
+    color: #8b572a;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
